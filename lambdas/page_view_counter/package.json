@@ -1,0 +1,12 @@
+{
+  "name": "lambda_page_view_counter",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.cjs"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.121",
+    "esbuild": "^0.19.3"
+  }
+}

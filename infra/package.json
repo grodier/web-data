@@ -1,0 +1,17 @@
+{
+  "name": "webdata-infra",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "build": "tsc",
+    "synth": "cdk synth",
+    "deploy": "cdk deploy --ci --require-approval never"
+  },
+  "devDependencies": {
+    "@types/node": "^20.6.3",
+    "aws-cdk": "^2.97.0",
+    "aws-cdk-lib": "^2.97.0",
+    "constructs": "^10.2.70",
+    "typescript": "^5.2.2"
+  }
+}
