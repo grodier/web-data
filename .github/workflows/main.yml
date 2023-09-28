@@ -1,0 +1,31 @@
+name: Deploy CDK Infrastructure
+
+on:
+  push:
+    branches: [main]
+  # workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy AWS Infrastructure
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Configure AWS for Web Dev Account
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_GITHUB_ROLE }}
+          aws-region: ${{ vars.AWS_REGION }}
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "npm"
+      - name: Install dependencies
+        run: npm install
+      - name: Deploy
+        run: npm run deploy
