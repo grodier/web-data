@@ -11,4 +11,5 @@ esbuild.build({
   outExtension: { ".js": ".mjs" },
   treeShaking: true,
   minify: true,
+  external: ["@aws-sdk/client-dynamodb", "@aws-sdk/lib-dynamodb"],
 });
