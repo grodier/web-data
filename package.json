@@ -2,6 +2,7 @@
   "private": true,
   "workspaces": [
     "infra",
+    "client_assets/*",
     "lambdas/*"
   ],
   "scripts": {
