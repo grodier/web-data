@@ -61,7 +61,5 @@ export async function handler(event: APIGatewayEvent, _context: Context) {
 
   return {
     statusCode: 200,
-    headers: { "Content-Type": "text/plain" },
-    body: `Hello World! You've hit ${event.path}\n`,
   };
 }
