@@ -8,8 +8,10 @@ class WebDataStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props: cdk.StackProps) {
     super(scope, id, props);
 
-    let table = new dynamodb.Table(this, "Hits", {
-      partitionKey: { name: "path", type: dynamodb.AttributeType.STRING },
+    let table = new dynamodb.TableV2(this, "PageView", {
+      partitionKey: { name: "pk", type: dynamodb.AttributeType.STRING },
+      sortKey: { name: "sk", type: dynamodb.AttributeType.STRING },
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
     });
 
     let pageViewCounterLambda = new lambda.Function(
@@ -20,7 +22,7 @@ class WebDataStack extends cdk.Stack {
         code: lambda.Code.fromAsset("../lambdas/page_view_counter/dist"),
         handler: "index.handler",
         environment: {
-          HITS_TABLE_NAME: table.tableName,
+          PAGE_VIEW_TABLE: table.tableName,
         },
       }
     );
