@@ -12,9 +12,9 @@ export async function handler(event: APIGatewayEvent, _context: Context) {
     return {
       statusCode: 400,
       headers: { "Content-Type": "application/json" },
-      body: {
+      body: JSON.stringify({
         error: "Missing body",
-      },
+      }),
     };
   }
 
@@ -26,9 +26,9 @@ export async function handler(event: APIGatewayEvent, _context: Context) {
     return {
       statusCode: 400,
       headers: { "Content-Type": "application/json" },
-      body: {
+      body: JSON.stringify({
         error: "Missing site_id",
-      },
+      }),
     };
   }
 
@@ -36,9 +36,9 @@ export async function handler(event: APIGatewayEvent, _context: Context) {
     return {
       statusCode: 400,
       headers: { "Content-Type": "application/json" },
-      body: {
+      body: JSON.stringify({
         error: "Missing path",
-      },
+      }),
     };
   }
 
